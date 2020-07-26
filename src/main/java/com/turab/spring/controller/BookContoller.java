@@ -32,14 +32,14 @@ public class BookContoller {
 		return ResponseEntity.ok().body(list);
 	}
 	
-	//SAve the book
+	//Save the book
 	@PostMapping("/api/book")
 	public  ResponseEntity<?> save(@RequestBody Book book){
 		long id = bookService.save(book);
 		return ResponseEntity.ok().body("Book created with id: "+id);
 	}
 
-	//Get one  book
+	//Get the book using id
 	@GetMapping("/api/book/{id}") 
 	public ResponseEntity<Book> get(@PathVariable("id") long id){
 		
@@ -47,14 +47,14 @@ public class BookContoller {
 		return ResponseEntity.ok().body(book);
 	}
 	
-	//Update the book record
+	//Update the book record by id
 		@PutMapping("/api/book/{id}")
 		public  ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody Book book){
 			bookService.update(id, book);
 			return ResponseEntity.ok().body("Book updated with");
 		}
 		
-	//Delete a book record
+	//Delete a book record by id
 		@DeleteMapping("/api/book/{id}")
 		public  ResponseEntity<?> delete(@PathVariable("id") long id){
 			bookService.delete(id);
